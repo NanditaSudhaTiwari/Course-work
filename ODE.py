@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+
 def f(Num_atoms):
     return -0.1*Num_atoms
 a = 0                  # start time
@@ -18,6 +19,7 @@ for time in time_list:
     k3 = h*f(Num_atoms+0.5*k2)
     k4 = h*f(Num_atoms+k3)
     Num_atoms += k4
+    
 def analytic_solution(time):
         return 1000*np.exp(-0.1*time)
 num_steps_analytic = 1000
@@ -32,6 +34,7 @@ Num_atoms_euler_list = []
 for time in time_list:
     Num_atoms_euler_list.append(Num_atoms)
     Num_atoms += h*f(Num_atoms)
+    
 plt.plot(time_analytic_list,Num_atoms_analytic_list,label="analytic")
 plt.scatter(time_list, Num_atoms_list,label="Runge-Kutta (fourth-order)")
 plt.scatter(time_list, Num_atoms_euler_list,label="Euler's method")
